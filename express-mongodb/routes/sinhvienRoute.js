@@ -41,5 +41,17 @@ router.put('/:_id', async(req,res)=>{
         
     }
 });
+
+// dinh nghia delete:
+//
+router.delete('/:_id', async (req, res) => {
+    const {_id} = req.params;
+    try {
+        await sinhvien.findByIdAndDelete(_id);
+        res.redirect('/');
+    } catch (error) {
+        console.error(error);
+    }
+});
 //export
 module.exports = router;
